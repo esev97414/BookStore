@@ -1,0 +1,11 @@
+C:\Users\esev\Documents\Visual Studio 2015\Projects\BookStore\UnitTests\bin\Debug\UnitTests.dll
+C:\Users\esev\Documents\Visual Studio 2015\Projects\BookStore\UnitTests\bin\Debug\UnitTests.pdb
+C:\Users\esev\Documents\Visual Studio 2015\Projects\BookStore\UnitTests\bin\Debug\BookStore.exe
+C:\Users\esev\Documents\Visual Studio 2015\Projects\BookStore\UnitTests\bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll
+C:\Users\esev\Documents\Visual Studio 2015\Projects\BookStore\UnitTests\bin\Debug\Newtonsoft.Json.dll
+C:\Users\esev\Documents\Visual Studio 2015\Projects\BookStore\UnitTests\bin\Debug\BookStore.pdb
+C:\Users\esev\Documents\Visual Studio 2015\Projects\BookStore\UnitTests\bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.xml
+C:\Users\esev\Documents\Visual Studio 2015\Projects\BookStore\UnitTests\bin\Debug\Newtonsoft.Json.xml
+C:\Users\esev\Documents\Visual Studio 2015\Projects\BookStore\UnitTests\obj\Debug\UnitTests.csprojResolveAssemblyReference.cache
+C:\Users\esev\Documents\Visual Studio 2015\Projects\BookStore\UnitTests\obj\Debug\UnitTests.dll
+C:\Users\esev\Documents\Visual Studio 2015\Projects\BookStore\UnitTests\obj\Debug\UnitTests.pdb

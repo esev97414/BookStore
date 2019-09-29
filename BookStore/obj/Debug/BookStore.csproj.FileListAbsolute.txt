@@ -1,0 +1,8 @@
+c:\users\esev\documents\visual studio 2015\Projects\BookStore\BookStore\bin\Debug\BookStore.exe.config
+c:\Users\esev\Documents\Visual Studio 2015\Projects\BookStore\BookStore\bin\Debug\BookStore.exe
+c:\Users\esev\Documents\Visual Studio 2015\Projects\BookStore\BookStore\bin\Debug\BookStore.pdb
+c:\Users\esev\Documents\Visual Studio 2015\Projects\BookStore\BookStore\bin\Debug\Newtonsoft.Json.dll
+c:\Users\esev\Documents\Visual Studio 2015\Projects\BookStore\BookStore\bin\Debug\Newtonsoft.Json.xml
+c:\Users\esev\Documents\Visual Studio 2015\Projects\BookStore\BookStore\obj\Debug\BookStore.csprojResolveAssemblyReference.cache
+c:\Users\esev\Documents\Visual Studio 2015\Projects\BookStore\BookStore\obj\Debug\BookStore.exe
+c:\Users\esev\Documents\Visual Studio 2015\Projects\BookStore\BookStore\obj\Debug\BookStore.pdb
