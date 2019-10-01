@@ -14,8 +14,6 @@ namespace BookStore
         public List<Book> Catalog { get; set; }
         public List<Category> Categories { get; set; }
 
-        PromotionService _promotionService;
-
         public Store()
         {
             Catalog = new List<Book>();
@@ -72,72 +70,53 @@ namespace BookStore
 
         public double Buy(params string[] basketByNames)
         {
-            List<INameQuantity> NotFoundItem = new List<INameQuantity>();
-            foreach (var item in basketByNames)
+            var total = 0.0;
+
+            // count number of item occurences
+            Dictionary<string, int> NumberOfOccurencesPerItem = new Dictionary<string, int>();
+            var ReducedInitialList = basketByNames.Distinct().ToList();
+            int nbr = 0;
+            for (int i = 0; i < ReducedInitialList.Count(); i++)
             {
-                var book = Catalog.Where(b => b.Name == item).SingleOrDefault();
-                if (book.Quantity <= 0)
+                for (int j = 0; j < basketByNames.Count(); j++)
                 {
-                    NotFoundItem.Add(new NameQuantity(book.Name, book.Quantity));
+                    if (ReducedInitialList[i] == basketByNames[j])
+                        nbr++;
+                }
+                NumberOfOccurencesPerItem.Add(ReducedInitialList[i], nbr);
+                nbr = 0;
+            }
+
+            //find all books with same category
+            List<List<string>> ItemsWithSameCategory = new List<List<string>>();
+            List<string> backupList = new List<string>();
+            for (int i = 0; i < ReducedInitialList.Count(); i++)
+            {
+                var book1 = Catalog.Where(b => b.Name == ReducedInitialList[i]).SingleOrDefault();
+                if (!backupList.Contains(book1.Name))
+                {
+                    List<string> concatList = new List<string>();
+                    for (int j = 0; j < ReducedInitialList.Count(); j++)
+                    {
+                        var book2 = Catalog.Where(b => b.Name == ReducedInitialList[j]).SingleOrDefault();
+                        if (book1.Category == book2.Category)
+                        {
+                            if (book1.Name != book2.Name)
+                            {
+                                concatList.Add(book2.Name);
+                            }
+                        }
+                    }
+                    concatList.Add(book1.Name);
+                    ItemsWithSameCategory.Add(concatList);
+                    backupList = concatList;
                 }
             }
 
-            if (NotFoundItem.Count > 0)
-            {
-                throw new NotEnoughInventoryException(NotFoundItem);
-            }
+            //Add all items with a discount on first item
+            total = new PromotionFactory().Create(this).Calculate(NumberOfOccurencesPerItem, ItemsWithSameCategory);
 
-            //Create internal collections
-            //1. Dict<Name, CategoryName> representing basketByNames
-            //2. List<Name> reprenting the duplicated elements if any
-            Dictionary<string, string> NameToCategoryDict = new Dictionary<string, string>();
-            List<string> duplicateList = ExtractDuplicateItems(NameToCategoryDict, basketByNames);
-
-            var sumOfItemsWithoutReduction = 0.0;
-            if (duplicateList.Any())
-            {
-                _promotionService = new PromotionService(new NoPromotionStrategy(this));
-                sumOfItemsWithoutReduction = _promotionService.CalculateCustomerPromotion(duplicateList);
-            }
-
-            //Reduce DuplicateList
-            var ReducedList = duplicateList.Distinct().ToList();
-            var firstItemReduction = 0.0;
-            if (ReducedList.Any())
-            {
-                _promotionService = new PromotionService(new FirstItemPromotionStrategy(this));
-                firstItemReduction = _promotionService.CalculateCustomerPromotion(duplicateList);
-            }
-            
-            //Get unique items (no duplicates)
-            var namesFromDict = NameToCategoryDict.Select(d => d.Key).ToList();
-            var uniqueItems = namesFromDict.Except(ReducedList).ToList();
-
-            var uniqueItemsReduction = 0.0;
-            if (uniqueItems.Any())
-            {
-                _promotionService = new PromotionService(new UniqueItemPromotionStrategy(this, ReducedList.Count, NameToCategoryDict));
-                uniqueItemsReduction = _promotionService.CalculateCustomerPromotion(uniqueItems);
-            }
-
-            return sumOfItemsWithoutReduction + firstItemReduction + uniqueItemsReduction;
-
-        }
-
-        private List<string> ExtractDuplicateItems(Dictionary<string, string> initialList, params string[] basketByNames)
-        {
-            List<string> duplicateList = new List<string>();
-            foreach (var item in basketByNames)
-            {
-                var book = Catalog.Where(b => b.Name == item).SingleOrDefault();
-                if (initialList.ContainsKey(book.Name))
-                {
-                    duplicateList.Add(book.Name);
-                }
-                else
-                    initialList.Add(book.Name, book.Category);
-            }
-            return duplicateList;
+            return total;
         }
     }
 }

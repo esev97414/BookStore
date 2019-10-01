@@ -45,7 +45,7 @@ namespace UnitTests
                 "Isaac Asimov - Robot series",
                 "Isaac Asimov - Foundation");
 
-            //Assert.IsTrue(total == 69.95); //un loupé dans l'algorithme!!! j'obtiens 68.15
+            Assert.IsTrue(total == 69.95);
         }
     }
 }

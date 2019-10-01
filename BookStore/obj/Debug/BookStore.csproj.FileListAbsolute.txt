@@ -6,3 +6,6 @@ c:\Users\esev\Documents\Visual Studio 2015\Projects\BookStore\BookStore\bin\Debu
 c:\Users\esev\Documents\Visual Studio 2015\Projects\BookStore\BookStore\obj\Debug\BookStore.csprojResolveAssemblyReference.cache
 c:\Users\esev\Documents\Visual Studio 2015\Projects\BookStore\BookStore\obj\Debug\BookStore.exe
 c:\Users\esev\Documents\Visual Studio 2015\Projects\BookStore\BookStore\obj\Debug\BookStore.pdb
+C:\working\project\BookStore\BookStore\bin\Debug\BookStore.exe.config
+C:\working\project\BookStore\BookStore\obj\Debug\BookStore.exe
+C:\working\project\BookStore\BookStore\obj\Debug\BookStore.pdb

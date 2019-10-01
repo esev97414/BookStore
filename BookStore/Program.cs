@@ -10,16 +10,16 @@
             var quantity = store.Quantity("Ayn Rand - FountainHead");
             System.Console.WriteLine(quantity);
 
-            //var total = store.Buy("Ayn Rand - FountainHead",
-            //    "J.K Rowling - Goblet Of fire",
-            //    "J.K Rowling - Goblet Of fire",
-            //    "Robin Hobb - Assassin Apprentice",
-            //    "Robin Hobb - Assassin Apprentice",
-            //    "Isaac Asimov - Robot series",
-            //    "Isaac Asimov - Foundation");
+            var total = store.Buy("Ayn Rand - FountainHead", //Philosophy
+                "J.K Rowling - Goblet Of fire", //Fantastique
+                "J.K Rowling - Goblet Of fire", //Fantastique
+                "Robin Hobb - Assassin Apprentice", //Fantastique
+                "Robin Hobb - Assassin Apprentice", //Fantastique
+                "Isaac Asimov - Robot series", //Science Fiction
+                "Isaac Asimov - Foundation"); //Science Fiction
 
-            var total = store.Buy("J.K Rowling - Goblet Of fire",
-                "Isaac Asimov - Foundation");
+            //var total = store.Buy("J.K Rowling - Goblet Of fire",
+            //    "Isaac Asimov - Foundation");
 
             //var total = store.Buy("J.K Rowling - Goblet Of fire",
             //    "Robin Hobb - Assassin Apprentice",
